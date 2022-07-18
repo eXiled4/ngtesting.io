@@ -16,3 +16,5 @@ export class BasicComponent implements OnInit {
   }
 
 }
+
+// Change detection works differently in testing environment compared to a production environment

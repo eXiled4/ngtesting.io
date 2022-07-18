@@ -38,6 +38,7 @@ describe('BasicComponent, (template)', () => {
     TestBed.configureTestingModule({
       declarations:[BasicComponent],
     });
+    // Here we configure testing module to check the basiccomponent
 
     fixture = TestBed.createComponent(BasicComponent);
     // Here we create a testing environment for basic component - using comp wont work
@@ -46,7 +47,7 @@ describe('BasicComponent, (template)', () => {
     comp = fixture.componentInstance;
     // componentInstance - The instance of the root component class
     debugElement = fixture.debugElement.query(By.css('p'))
-      // 
+      // this line directs the debugElement function to ONLY debug the p element
 
     element = debugElement.nativeElement
     // nativeElement - the underlying DOM element at the root component
@@ -55,6 +56,8 @@ describe('BasicComponent, (template)', () => {
 
   // Below is the first test written! - 
   it("should contain a name", () => {
+    expect(element.textContent).not.toContain(comp.name);
+    // This line above states that UNTIL the data binding has occurred, the value from name inside component should not be shown
     fixture.detectChanges();
     // In production change detection and binding happens automatically  - not in testing!
     // This is why we call fixture.detectChanges() - tells ng to perform initial bindings - then in next line
